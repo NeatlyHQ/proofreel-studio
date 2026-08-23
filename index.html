@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProofReel Studio — Turn Any Result Into a Shareable Proof Video, 100% In Your Browser</title>
+<style>
+  :root{
+    --bg:#0b0b12; --panel:#14141f; --panel2:#1a1a28; --line:#26263a;
+    --txt:#e9e9f2; --muted:#8a8aa0; --acc1:#667eea; --acc2:#764ba2;
+    --green:#4ade80; --red:#f87171;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;line-height:1.5}
+  a{color:inherit}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  .grad{background:linear-gradient(135deg,var(--acc1),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:16px 32px;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;transition:.2s}
+  .btn-primary{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff}
+  .btn-primary:hover{filter:brightness(1.1);transform:translateY(-1px)}
+  .btn-ghost{background:var(--panel2);color:var(--txt);border:1px solid var(--line)}
+  section{padding:64px 0}
+  h1{font-size:44px;font-weight:800;line-height:1.15;letter-spacing:-.02em}
+  h2{font-size:30px;font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+  .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--acc1);background:rgba(102,126,234,.12);border:1px solid rgba(102,126,234,.3);padding:6px 14px;border-radius:999px;margin-bottom:20px}
+  .sub{color:var(--muted);font-size:18px;max-width:640px;margin:16px 0 32px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:900px){.grid4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:760px){.grid2,.grid3,.grid4{grid-template-columns:1fr}h1{font-size:32px}}
+  .contrast{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .contrast > div{padding:28px}
+  .contrast .them{background:var(--panel);border-right:1px solid var(--line)}
+  .contrast .us{background:linear-gradient(180deg,rgba(102,126,234,.1),rgba(118,75,162,.06))}
+  .contrast h3{font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:16px}
+  .contrast li{list-style:none;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .contrast .us li{color:var(--txt)}
+  .contrast .them li{color:var(--muted)}
+  .contrast li::before{margin-right:8px}
+  .contrast .them li::before{content:"✕";color:var(--red)}
+  .contrast .us li::before{content:"✓";color:var(--green)}
+  .feat{display:flex;gap:14px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line)}
+  .feat:last-child{border-bottom:none}
+  .feat .ic{font-size:22px}
+  .feat h4{font-size:16px;margin-bottom:4px}
+  .feat p{color:var(--muted);font-size:14px}
+  .tmpl{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .tmpl h4{font-size:15px;margin-bottom:6px}
+  .tmpl p{color:var(--muted);font-size:13px}
+  .price-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px 24px;display:flex;flex-direction:column}
+  .price-card.pop{border-color:var(--acc1);background:linear-gradient(180deg,rgba(102,126,234,.08),var(--panel) 40%);position:relative}
+  .pop-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--acc1),var(--acc2));font-size:11px;font-weight:700;padding:5px 14px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+  .price-card h3{font-size:17px;margin-bottom:4px}
+  .price-card .price{font-size:34px;font-weight:800;margin:10px 0}
+  .price-card .price span{font-size:14px;color:var(--muted);font-weight:500}
+  .price-card ul{margin:16px 0;flex:1}
+  .price-card li{list-style:none;padding:5px 0;font-size:13px;color:var(--muted)}
+  .price-card li::before{content:"✓ ";color:var(--green);font-weight:700}
+  .faq details{border-bottom:1px solid var(--line);padding:18px 0}
+  .faq summary{cursor:pointer;font-weight:600;font-size:15px}
+  .faq p{color:var(--muted);margin-top:10px;font-size:14px}
+  footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:12px;text-align:center}
+  .cta-band{text-align:center;background:linear-gradient(135deg,rgba(102,126,234,.15),rgba(118,75,162,.1));border:1px solid var(--line);border-radius:20px;padding:48px 24px}
+</style>
+</head>
+<body>
+
+<section style="padding-top:56px;padding-bottom:0">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow">ProofReel Studio — by NeatlyHQ</span>
+    <h1>Turn Any Result Into a<br><span class="grad">Shareable Proof Video</span></h1>
+    <p class="sub" style="margin-left:auto;margin-right:auto">
+      Screenshots get scrolled past. A before/after proof video stops the scroll. ProofReel Studio
+      turns your raw numbers — revenue, followers, weight loss, ranking, anything — into a
+      polished animated .mp4 in seconds, rendered and exported 100% inside your browser. No
+      upload, no account, no subscription, ever.
+    </p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="#" id="jvzoo-buy-link" class="btn btn-primary">🎬 Get ProofReel Studio — $37 one-time</a>
+      <a href="#pricing" class="btn btn-ghost">See all plans</a>
+    </div>
+    <p style="color:var(--muted);font-size:13px;margin-top:14px">One-time payment. No subscription. No credit card stored anywhere.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:36px">
+      <h2>Same result. Zero of the risk.</h2>
+      <p class="sub" style="margin-left:auto;margin-right:auto">Most "results video" tools on the market today are cloud subscriptions wearing a one-time-price sticker.</p>
+    </div>
+    <div class="contrast">
+      <div class="them">
+        <h3>Typical cloud video tool</h3>
+        <ul>
+          <li>Create an account before you can do anything</li>
+          <li>Your client's numbers get uploaded to their servers</li>
+          <li>Recurring monthly fee, or fine print that quietly renews later</li>
+          <li>Stops working the day the company shuts down or changes its API</li>
+          <li>Export queue, processing time, usage caps</li>
+        </ul>
+      </div>
+      <div class="us">
+        <h3>ProofReel Studio</h3>
+        <ul>
+          <li>Open the file, paste your numbers — zero signup</li>
+          <li>Your data and exported video never leave your computer</li>
+          <li>One payment. That's it. No recurring charge, ever</li>
+          <li>Keeps working forever — it's a file you own, not a login you rent</li>
+          <li>Instant local export, no queue, no cap</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="grid2" style="align-items:center">
+      <div>
+        <h2>Built to make results impossible to scroll past</h2>
+        <p class="sub">Real H.264 .mp4 export via WebCodecs — not a disguised WebM, verified frame by frame.</p>
+        <div class="card">
+          <div class="feat"><span class="ic">🎞️</span><div><h4>Real MP4 export</h4><p>True H.264 encoding, playable everywhere — verified with ffprobe/ffmpeg.</p></div></div>
+          <div class="feat"><span class="ic">📱</span><div><h4>3 native formats</h4><p>Vertical 9:16 for Reels/TikTok/Shorts, Landscape 16:9, Square 1:1 — Commercial+.</p></div></div>
+          <div class="feat"><span class="ic">📂</span><div><h4>CSV import</h4><p>Drop in a spreadsheet of client metrics instead of typing them one by one — Commercial+.</p></div></div>
+          <div class="feat"><span class="ic">🎨</span><div><h4>5 premium fonts + full color control</h4><p>Match every video to your brand or your client's.</p></div></div>
+        </div>
+      </div>
+      <div class="card" style="aspect-ratio:9/12;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 30%,rgba(102,126,234,.25),transparent 70%)">
+        <span style="font-size:15px;color:var(--muted)">[ product screenshot / demo GIF placeholder ]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:32px">
+      <h2>3 video templates for 3 different proofs</h2>
+      <p class="sub" style="margin-left:auto;margin-right:auto">Pick the shape your result actually tells best.</p>
+    </div>
+    <div class="grid3">
+      <div class="tmpl"><h4>📊 Single Counter</h4><p>One metric, before → after. Perfect for "we took this client from X to Y."</p></div>
+      <div class="tmpl"><h4>⚖️ Comparison</h4><p>Up to 3 metrics side by side. Perfect for a full before/after audit snapshot.</p></div>
+      <div class="tmpl"><h4>📈 Timeline</h4><p>A progress curve over time. Perfect for a multi-month growth story.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:32px">
+      <h2>Built for agencies managing real client volume</h2>
+      <p class="sub" style="margin-left:auto;margin-right:auto">The higher tiers exist because one proof video is a nice-to-have — a repeatable proof pipeline is a business asset.</p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="feat"><span class="ic">🗂️</span><div><h4>Client Profiles — Agency+</h4><p>Save each client's data, template and brand colors. Switch between them instantly instead of re-entering numbers every time.</p></div></div>
+      </div>
+      <div class="card">
+        <div class="feat"><span class="ic">🏷️</span><div><h4>White-label — Bundle</h4><p>Replace "ProofReel Studio" with your own agency name in the app itself. Hand the tool to your team or resell the service under your own brand.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:36px">
+      <h2>One-time payment. Pick your scope.</h2>
+      <p class="sub" style="margin-left:auto;margin-right:auto">No plan renews. No plan expires. You just own more usage rights as you go up.</p>
+    </div>
+    <div class="grid4">
+      <div class="price-card">
+        <h3>Personal</h3>
+        <div class="price">$37</div>
+        <ul>
+          <li>All 3 video templates</li>
+          <li>Vertical 9:16 export</li>
+          <li>Personal use only</li>
+          <li>Exports include a small watermark</li>
+        </ul>
+        <a href="#" class="btn btn-ghost">Get Personal</a>
+      </div>
+      <div class="price-card pop">
+        <span class="pop-badge">Most popular</span>
+        <h3>Commercial</h3>
+        <div class="price">$67</div>
+        <ul>
+          <li>Everything in Personal</li>
+          <li>Watermark-free exports</li>
+          <li>Landscape + Square formats</li>
+          <li>CSV import</li>
+          <li>Use for client work, sell the videos</li>
+        </ul>
+        <a href="#" class="btn btn-primary">Get Commercial</a>
+      </div>
+      <div class="price-card">
+        <h3>Agency</h3>
+        <div class="price">$197</div>
+        <ul>
+          <li>Everything in Commercial</li>
+          <li>Unlimited saved client profiles</li>
+          <li>Instant profile switching</li>
+          <li>Unlimited clients</li>
+        </ul>
+        <a href="#" class="btn btn-ghost">Get Agency</a>
+      </div>
+      <div class="price-card">
+        <h3>Bundle</h3>
+        <div class="price">$397</div>
+        <ul>
+          <li>Everything in Agency</li>
+          <li>White-label branding</li>
+          <li>Resell the service under your own name</li>
+          <li>No per-client subscription — ever</li>
+        </ul>
+        <a href="#" class="btn btn-ghost">Get Bundle</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap" style="max-width:760px">
+    <h2 style="text-align:center;margin-bottom:24px">Questions</h2>
+    <details>
+      <summary>Is this really a one-time payment?</summary>
+      <p>Yes. There is no subscription, no renewal, no recurring charge. You pay once for the tier you choose and the file is yours to keep and use going forward.</p>
+    </details>
+    <details>
+      <summary>Do I need an account or internet connection to use it?</summary>
+      <p>No account is required to use the tool. It runs as a local file in your browser — your data and exported video never leave your computer.</p>
+    </details>
+    <details>
+      <summary>What happens if NeatlyHQ stops updating the product?</summary>
+      <p>The tool keeps working. It doesn't depend on a live server to render or export video, so there's nothing that can be shut off.</p>
+    </details>
+    <details>
+      <summary>Which browsers are supported?</summary>
+      <p>MP4 export requires a browser with WebCodecs support — Chrome or Edge on desktop. Native MP4 export is not available on Safari, Firefox, or mobile browsers.</p>
+    </details>
+    <details>
+      <summary>Can I upgrade from a lower tier later?</summary>
+      <p>Yes, upgrades are available at the difference in price at any time.</p>
+    </details>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-band">
+      <h2 style="margin-bottom:12px">Own it once. Prove results forever.</h2>
+      <p class="sub" style="margin-left:auto;margin-right:auto">No account, no upload, no subscription — just paste your numbers and export.</p>
+      <a href="#" class="btn btn-primary">🎬 Get ProofReel Studio — $37 one-time</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>ProofReel Studio is a one-time purchase — you own the software file itself, which requires no ongoing server or subscription to function.</p>
+    <p style="margin-top:16px">Disclaimer: Please note that this product does not provide any guarantee of income or success. The results achieved by the product owner or any other individuals mentioned are not indicative of future success or earnings. This website is not affiliated with FaceBook or any of its associated entities. Once you navigate away from FaceBook, the responsibility for the content and its usage lies solely with the user. All content on this website, including but not limited to text, images, and multimedia, is protected by copyright law and the Digital Millennium Copyright Act. Unauthorized copying, duplication, modification, or theft, whether intentional or unintentional, is strictly prohibited. Violators will be prosecuted to the fullest extent of the law.</p>
+    <p style="margin-top:12px">We want to clarify that JVZoo serves as the retailer for the products featured on this site. JVZoo® is a registered trademark of BBC Systems Inc., a Florida corporation located at 1809 E. Broadway Street, Suite 125, Oviedo, FL 32765, USA, and is used with permission. The role of JVZoo as a retailer does not constitute an endorsement, approval, or review of these products or any claims, statements, or opinions used in their promotion.</p>
+    <p style="margin-top:16px">© 2026 NeatlyHQ. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
